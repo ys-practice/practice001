@@ -46,11 +46,15 @@ public class WorldTimeDiff {
             cityDiffMap.put(cityNameOther, diff);
         }
 
+        // 投稿した都市と時刻
         String cityName = scanner.next();
         String sendTimeStr = scanner.next();
 
         // 読み取り終了
         scanner.close();
+
+        // 投稿した都市の基準時との時差
+        int tmpStndardTime = cityDiffMap.get(cityName);
 
         // "HH:mm"の入出力用フォーマット
         SimpleDateFormat format = new SimpleDateFormat("HH:mm");
@@ -77,7 +81,7 @@ public class WorldTimeDiff {
             calendar.setTime(time);
             if (!cityName.equals(entry.getKey())) {
                 // 時差を計算する
-                calendar.add(Calendar.HOUR_OF_DAY, entry.getValue());
+                calendar.add(Calendar.HOUR_OF_DAY, entry.getValue() - tmpStndardTime);
             }
             // "都市名 HH:mm"を出力する
             System.out.println(entry.getKey() + " " + format.format(calendar.getTime()));
