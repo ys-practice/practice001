@@ -1,6 +1,6 @@
 package practice004;
 
-import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -83,8 +83,11 @@ public class PurchaseRnaking {
         // スキャナクローズ
         sc.close();
         // 金額順にソートして出力
-        employeePurchaseMap.entrySet().stream().sorted(Collections.reverseOrder(Entry.comparingByValue()))
-                .forEach(set -> System.out.println(set.getKey()));
+        employeePurchaseMap.entrySet().stream().sorted(new Comparator<Entry<String, Long>>() {
+            public int compare(Entry<String, Long> entry1, Entry<String, Long> entry2) {
+                return entry2.getValue().compareTo(entry1.getValue());
+            }
+        }).forEach(set -> System.out.println(set.getKey()));
     }
 
 }
