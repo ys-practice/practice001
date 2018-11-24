@@ -28,12 +28,12 @@ public class FileReadAndOutPut {
         }
 
         // 出力処理用のMap ※自動ソートを利用する
-        Map<String, OutPutInformation> outputMap = new TreeMap<>();
+        Map<String, OutputInformation> outputMap = new TreeMap<>();
 
         for (ItemInformation itemInfo : recieptInfo.getItems()) {
             String id = itemInfo.getId();
             if (!outputMap.containsKey(id)) {
-                outputMap.put(id, new OutPutInformation(itemInfo.getName()));
+                outputMap.put(id, new OutputInformation(itemInfo.getName()));
             } else {
                 outputMap.get(id).increaseItemCounts();
             }

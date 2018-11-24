@@ -1,7 +1,7 @@
 package practice007;
 
 /** 出力用クラス*/
-public class OutPutInformation {
+public class OutputInformation {
 
     /** 商品名*/
     private String itemName;
@@ -13,7 +13,7 @@ public class OutPutInformation {
      * @param itemId 商品ID
      * @param itemName 商品名
      ******************************************************/
-    public OutPutInformation(String itemName){
+    public OutputInformation(String itemName){
         this.itemName = itemName;
         itemCounts++;
     }
